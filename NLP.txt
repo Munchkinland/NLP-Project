@@ -1,0 +1,104 @@
+# %% [markdown]
+# # Explore here
+
+# %% [markdown]
+# Data procesing
+
+# %%
+import pandas as pd
+
+total_data = pd.read_csv("https://raw.githubusercontent.com/4GeeksAcademy/NLP-project-tutorial/main/url_spam.csv")
+total_data.head()
+
+# %%
+total_data["is_spam"] = total_data["is_spam"].apply(lambda x: 1 if x else 0).astype(int)
+total_data.head()
+
+# %%
+print(total_data.shape)
+total_data = total_data.drop_duplicates()
+total_data = total_data.reset_index(inplace = False, drop = True)
+total_data.shape
+
+# %% [markdown]
+# Eliminate duplicates
+
+# %%
+print(f"Spam: {len(total_data.loc[total_data.is_spam == 1])}")
+print(f"No spam: {len(total_data.loc[total_data.is_spam == 0])}")
+
+# %%
+import regex as re
+
+def preprocess_text(text):
+    # Remove any character that is not a letter (a-z) or white space ( )
+    text = re.sub(r'[^a-z ]', " ", text)
+    
+    # Remove white spaces
+    text = re.sub(r'\s+[a-zA-Z]\s+', " ", text)
+    text = re.sub(r'\^[a-zA-Z]\s+', " ", text)
+
+    # Multiple white spaces into one
+    text = re.sub(r'\s+', " ", text.lower())
+
+    # Remove tags
+    text = re.sub("&lt;/?.*?&gt;"," &lt;&gt; ", text)
+
+    return text.split()
+
+total_data["url"] = total_data["url"].apply(preprocess_text)
+total_data.head()
+
+# %% [markdown]
+# Lematization and stopwords deletion
+
+# %%
+total_data.columns
+
+# %%
+from nltk import download
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+download("wordnet")
+lemmatizer = WordNetLemmatizer()
+
+download("stopwords")
+stop_words = stopwords.words("english")
+
+def lemmatize_text(words, lemmatizer = lemmatizer):
+    tokens = [lemmatizer.lemmatize(word) for word in words]
+    tokens = [word for word in tokens if word not in stop_words]
+    tokens = [word for word in tokens if len(word) > 3]
+    tokens = [word for word in tokens if word != "http"]
+    return tokens
+  
+
+total_data["url"] = total_data["url"].apply(lemmatize_text)
+total_data.head()
+
+# %%
+filas_con_cualquier_none = total_data.isna().any(axis=1)
+total_data_con_cualquier_none = total_data[filas_con_cualquier_none]
+print(total_data_con_cualquier_none)
+filas_con_none1 = total_data['url'].isna()
+filas_con_none2 = total_data['is_spam'].isna()
+print(filas_con_none1)
+print(filas_con_none2)
+
+
+# %%
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+
+wordcloud = WordCloud(width = 800, height = 800, background_color = "black", max_words = 1000, min_font_size = 20, random_state = 42)\
+    .generate(str(total_data["url"]))
+
+fig = plt.figure(figsize = (8, 8), facecolor = None)
+plt.imshow(wordcloud)
+plt.axis("off")
+plt.show()
+
+# %% [markdown]
+# Seguir por aqui: https://github.com/4GeeksAcademy/NLP-project-tutorial/blob/main/solution.ipynb
+
+
