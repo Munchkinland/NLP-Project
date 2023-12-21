@@ -37,9 +37,15 @@ python app.py
 Las contribuciones son bienvenidas. Si deseas contribuir al proyecto, por favor:
 
 Haz un fork del repositorio.
+
 Crea una rama para tu característica (git checkout -b feature/fooBar).
+
 Haz tus cambios y confírmalos (git commit -am 'Add some fooBar').
+
 Sube tu rama (git push origin feature/fooBar).
+
 Crea una nueva solicitud de extracción (Pull Request).
+
 Licencia
+
 Este proyecto está licenciado bajo MIT License - vea el archivo LICENSE.md para más detalles.
