@@ -46,6 +46,6 @@ Sube tu rama (git push origin feature/fooBar).
 
 Crea una nueva solicitud de extracción (Pull Request).
 
-Licencia
+# Licencia
 
 Este proyecto está licenciado bajo MIT License - vea el archivo LICENSE.md para más detalles.
