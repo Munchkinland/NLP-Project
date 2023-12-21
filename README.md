@@ -1,54 +1,50 @@
-# Proyecto de Detección de Spam URL
+# URL Spam Detection Project 🔍
 
 ![_0e30262b-32f3-4494-be98-0a732f5293ce](https://github.com/Munchkinland/NLP-Project/assets/92251234/9a85c6e9-7863-48b0-9fee-5fceda25a1ac)
 
-# Descripción
+# Description 📝
 
-Este proyecto implementa un modelo de aprendizaje automático para la detección de spam en URLs. Utiliza técnicas de procesamiento de lenguaje natural (NLP) y una máquina de vectores de soporte (SVM) para clasificar URLs como spam o no spam.
+This project implements a machine learning model for URL spam detection. It uses Natural Language Processing (NLP) techniques and a Support Vector Machine (SVM) to classify URLs as spam or not spam.
 
-## Instalación
+# Installation 💻
 
-Para instalar las dependencias necesarias, clona el repositorio y ejecuta el siguiente comando en tu entorno local:
+To install the necessary dependencies, clone the repository and run the following command in your local environment:
 
 pip install -r requirements.txt
-Requisitos
-Python 3.6+
-Bibliotecas: pandas, regex, nltk, scikit-learn (incluidas en requirements.txt)
 
-# Uso
+### Requirements
+- Python 3.6+
+- Libraries: pandas, regex, nltk, scikit-learn (included in requirements.txt)
 
-Sigue estos pasos para ejecutar el proyecto:
+# Usage 🚀
 
-Preprocesamiento de Datos: Los datos se cargan y se limpian para eliminar duplicados y caracteres no deseados.
+Follow these steps to run the project:
 
-Procesamiento de Texto: Se aplica la lematización y la eliminación de stopwords a los textos de las URLs.
+- **Data Preprocessing**: Load and clean data to remove duplicates and unwanted characters.
+- **Text Processing**: Apply lemmatization and stopword removal to the URL texts.
+- **Feature Extraction**: Use TF-IDF to convert the text into a numerical format suitable for the model.
+- **Model Training**: The SVM model is trained with the processed data.
+- **Hyperparameter Optimization**: Use GridSearchCV to find the best hyperparameters for the SVM model.
+- **Model Evaluation**: Evaluate the accuracy of the model before and after optimization.
 
-Extracción de Características: Se utiliza TF-IDF para convertir el texto en un formato numérico adecuado para el modelo.
-
-Entrenamiento del Modelo: El modelo SVM se entrena con los datos procesados.
-
-Optimización de Hiperparámetros: Se utiliza GridSearchCV para encontrar los mejores hiperparámetros para el modelo SVM.
-
-Evaluación del Modelo: Se evalúa la precisión del modelo antes y después de la optimización.
-
-#Ejecución de Scripts
-Para ejecutar el script principal, usa el siguiente comando:
+### Running Scripts
+To run the main script, use the following command:
 
 python app.py
 
-# Contribución
-Las contribuciones son bienvenidas. Si deseas contribuir al proyecto, por favor:
+markdown
+Copy code
 
-Haz un fork del repositorio.
+# Contribution 🤝
 
-Crea una rama para tu característica (git checkout -b feature/fooBar).
+Contributions are welcome. If you want to contribute to the project, please:
 
-Haz tus cambios y confírmalos (git commit -am 'Add some fooBar').
+- Fork the repository.
+- Create a branch for your feature (`git checkout -b feature/fooBar`).
+- Make your changes and commit them (`git commit -am 'Add some fooBar'`).
+- Push your branch (`git push origin feature/fooBar`).
+- Create a new Pull Request.
 
-Sube tu rama (git push origin feature/fooBar).
+# License 📜
 
-Crea una nueva solicitud de extracción (Pull Request).
-
-# Licencia
-
-Este proyecto está licenciado bajo MIT License - vea el archivo LICENSE.md para más detalles.
+This project is licensed under the MIT License - see the LICENSE.md file fo
